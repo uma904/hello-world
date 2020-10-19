@@ -1,0 +1,28 @@
+package mfp;
+
+//import java.util.*;
+
+ // Compiler version JDK 11.0.2
+
+ class Employee
+ {
+   int age = 24;
+  String name = "Sourabh";
+    String city = "Bangalore";
+   
+   void display ()
+   {
+     System.out. println("Name of the employee is " + name) ;
+     System.out.println("age of the employee is " +age);
+     System. out. println("city of the employee is " +city);
+   }
+ }
+ class Mfp
+ {
+   public static void main(String args[])
+   { 
+    Employee e=new Employee();
+    e.display();
+   }
+ }
+    
