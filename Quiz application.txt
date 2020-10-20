@@ -1,0 +1,179 @@
+package mfp;
+
+import java.util.*;
+
+// creating a class Question
+
+class Question
+{
+
+    // declearing the variables .
+
+    Scanner s=new Scanner(System.in);
+
+    String question, option1,option2, option3, option4;
+
+    int correctAnswer, userAnswer;
+
+    // function to askquestion which is of boolean type.
+
+    public boolean askQuestion()
+    {
+
+        System.out.println("\n"+question);
+        
+        System.out.println("\n1. "+option1);
+        
+        System.out.println("2. "+option2);{}
+        
+        System.out.println("3. "+option3);
+        
+        System.out.println("4. "+option4);
+        
+        System.out.print("\nPlease choose an option : ");
+        
+        userAnswer=s.nextInt();
+        
+        if(userAnswer==correctAnswer)
+        
+        {
+        
+            return true;
+        
+        }
+       
+        return false;
+   
+    }
+
+}
+
+// creating a class Player
+
+class Player 
+
+{
+ 
+    Scanner sc=new Scanner(System.in);
+ 
+    String Name;
+ 
+    int score=0,Answered=0,wronglyAnswered=0;
+
+    // getting player details.
+
+    public void getDetails(){
+
+        System.out.print("\nEnter Player Name : ");
+        Name=sc.next();
+
+    }
+
+}
+
+// creating a class  Game
+
+class Game {
+
+    // creating a array for Question class
+
+    Question[] questions=new Question[4];
+    
+    // creating a object for player.
+
+    Player player=new Player();
+
+    // question and answer dataset.
+
+    String[] questionsdata={"Which Keyword is used to create class in Java?","Which  keyword is used to import a package from the Java API library?","Which keyword is used to return a value inside a method?","Which  statement is used to stop a loop?"};
+    String[] option1={"className","import","void","break"};
+    String[] options2={"Myclass","lib","return","stop"};
+    String[] options3={"class()","package","break","continue"};
+    String[] options4={"class","getlib","get","exit"};
+    int[] answers={1,1,2,1};
+
+    // function to create object for questions with dataset accordingly.
+
+    public void initGame()
+    {
+
+        for(int i=0;i<4;i++)
+        {
+        
+            questions[i]=new Question();
+            questions[i].question=questionsdata[i];
+            questions[i].option1=options1[i];
+            questions[i].option2=options2[i];
+            questions[i].option3=options3[i];
+            questions[i].option4=options4[i];
+            questions[i].correctAnswer=answers[i];
+    
+        }
+    
+    }
+    
+    // function to play games in which for each correct answer score is incremented with 10 and no. of correct answer incress by 1.
+    // and also for each wrong answer the score is decremented by 5 and no. of wrong answer incress by 1.
+
+    public void play()
+
+    {
+
+        player.getDetails();
+        
+        for(int i=0;i<4;i++)
+        {
+            boolean status=questions[i].askQuestion();
+            
+            if(status==true)
+            {
+        
+                System.out.println("\nAwesome dude, Correct answer!!!");
+                player.score=player.score+10;
+                player.Answered++;
+            
+            }
+            
+            else
+            {
+        
+                System.out.println("\nSorry the answer is not correct...");
+                player.score=player.score-5;
+                player.wronglyAnswered++;
+        
+            }
+        
+        }
+
+        // printing the score board.
+
+        System.out.println("\n\nSCORE BOARD...");
+        System.out.println("\nPlayer Name = "+player.Name);
+        System.out.println("\nPlayer Score = "+player.score);
+        System.out.println("\nNo. of questions Player correctly Answered = "+player.Answered);
+        System.out.println("\nNo. of questions Player wrongly Answered = "+player.wronglyAnswered);
+    
+    }
+
+}
+
+// main class of the program named QuizApp.
+
+public class QuizApp  
+{
+
+    // main function.
+    public static void main(String[] args)
+    
+    {
+
+        // creating a object for Game class and calling its method.
+
+        Game game=new Game();
+        game.initGame();
+        game.play();
+
+    }
+
+}
+
