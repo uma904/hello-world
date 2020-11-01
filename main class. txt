@@ -1,0 +1,52 @@
+package com;
+import java.util.Scanner;
+
+public class Main{
+
+public static void main(String args[])
+Scanner sc=new Scanner(System.in);
+int choice;
+int doit;
+Management management=new Management ();
+do
+{
+  System.out.println(" Choose an option");
+  
+   System.out.println("1.Addproducts");
+   
+   System.out.println("2.View products"); 
+                                   System.out.println("3.SortbyPrice");
+                     System.out.println("4.DeletebyName");
+    
+   choice=sc.nextInt();
+   switch(choice)  
+   {
+     case 1 :{
+       management.addProducts();
+       break;
+     }
+     
+     case 2 :{
+       management.displayProducts();
+       break;
+     }
+     
+     case 3 :{
+       management.sortAndDisplay();
+       break;
+     }
+     
+     case 4 :{
+       management.delete();
+       break;
+     }
+     
+     default :{
+       System.out.println("Please select a valid option");
+     }
+   } 
+   System.out.println("Do you want to continue? 1-yes or 0- no");
+   doit=sc.nextInt();           
+}
+while(doit==1);
+}
